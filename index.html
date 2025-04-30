@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello World Animation</title>
+  <style>
+    /* Global styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #0e0e0e;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Fancy gradient text with typewriter effect */
+    h1 {
+      font-size: 4rem;
+      color: transparent;
+      background: linear-gradient(90deg, #ff0080, #ff8c00, #40e0d0, #ff0080);
+      background-size: 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: .15em solid rgba(255,255,255,0.75);
+      animation: 
+        typing 3.5s steps(20, end) forwards,
+        blinking .75s step-end infinite,
+        gradient 5s ease infinite;
+    }
+
+    /* Typewriter keyframes */
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 12ch; }
+    }
+
+    /* Cursor blink */
+    @keyframes blinking {
+      0%, 100% { border-color: transparent }
+      50% { border-color: rgba(255,255,255,0.75) }
+    }
+
+    /* Gradient shift */
+    @keyframes gradient {
+      0% { background-position: 0% }
+      50% { background-position: 100% }
+      100% { background-position: 0% }
+    }
+
+    /* Subtle floating background particles */
+    .particle {
+      position: absolute;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      animation: float 10s infinite ease-in;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Hello World</h1>
+  <!-- Particles container -->
+  <script>
+    // Create floating particles
+    const particleCount = 50;
+    for (let i = 0; i < particleCount; i++) {
+      let p = document.createElement('div');
+      p.classList.add('particle');
+      let size = Math.random() * 8 + 2;
+      p.style.width = `${size}px`;
+      p.style.height = `${size}px`;
+      p.style.left = `${Math.random() * 100}vw`;
+      p.style.top = `${Math.random() * 100}vh`;
+      p.style.animationDuration = `${Math.random() * 10 + 5}s`;
+      p.style.animationDelay = `${Math.random() * 5}s`;
+      document.body.appendChild(p);
+    }
+  </script>
+</body>
+</html>
